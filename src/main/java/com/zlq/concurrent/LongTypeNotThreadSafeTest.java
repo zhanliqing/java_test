@@ -1,4 +1,4 @@
-package com.zlq.current;
+package com.zlq.concurrent;
 
 import org.junit.Test;
 

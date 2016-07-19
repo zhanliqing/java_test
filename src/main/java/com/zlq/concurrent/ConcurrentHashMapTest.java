@@ -1,4 +1,4 @@
-package com.zlq.current;
+package com.zlq.concurrent;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
