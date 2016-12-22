@@ -1,5 +1,6 @@
 package com.zlq.concurrent.spinlock;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -12,20 +13,63 @@ import java.util.concurrent.atomic.AtomicInteger;
  * http://coderbee.net/index.php/concurrent/20131115/577
  */
 public class TicketLock {
-    private AtomicInteger serviceNum = new AtomicInteger();
-
-    private AtomicInteger ticketNum = new AtomicInteger();
-
+    private AtomicInteger serviceNum = new AtomicInteger(); // 服务号
+    private AtomicInteger ticketNum = new AtomicInteger(); // 排队
     private ThreadLocal<Integer> myTicket = new ThreadLocal<>();
 
     public void lock() {
-        int myNum = serviceNum.getAndIncrement();
-        myTicket.set(myNum);
-        while (myNum != ticketNum.get()) ;
+        // 首先原子性地获得一个排队号
+        int myTicketNum = ticketNum.getAndIncrement();
+
+        // 只要当前服务号不是自己的就不断轮询
+        while (serviceNum.get() != myTicketNum) {
+        }
+
+        myTicket.set(myTicketNum);
+        System.out.println(Thread.currentThread().getName() + " acquire lock");
     }
 
     public void unlock() {
-        int next = myTicket.get() + 1;
-        serviceNum.compareAndSet(myTicket.get(), next);
+        int my = myTicket.get();
+        // 只有当前线程拥有者才能释放锁
+        int next = my + 1;
+        if (serviceNum.compareAndSet(my, next)) {
+            System.out.println(Thread.currentThread().getName() + " release lock");
+        } else {
+            throw new RuntimeException("error");
+        }
+    }
+
+    static class Main {
+        public static void main(String[] args) {
+            TicketLock ticketLock = new TicketLock();
+            new Thread(() -> {
+                ticketLock.lock();
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ticketLock.unlock();
+            }).start();
+            new Thread(() -> {
+                ticketLock.lock();
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ticketLock.unlock();
+            }).start();
+            new Thread(() -> {
+                ticketLock.lock();
+                try {
+                    TimeUnit.SECONDS.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                ticketLock.unlock();
+            }).start();
+        }
     }
 }

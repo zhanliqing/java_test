@@ -9,7 +9,7 @@ import java.io.IOException;
 public class File1 {
 	public static void main(String args[]) throws IOException {
 		String path = "\\home\\q\\server\\navigationdata\\";
-		String name = "LocationRegion.tmp";
+		String name = "LocationRegion.Tmp";
 
 		File filePath = new File(path);
 		if (filePath.exists() && filePath.isDirectory()) {

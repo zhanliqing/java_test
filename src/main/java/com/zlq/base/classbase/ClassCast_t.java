@@ -1,4 +1,4 @@
-package com.zlq.base;
+package com.zlq.base.classbase;
 
 import org.junit.Test;
 
