@@ -8,8 +8,6 @@ import java.util.Random;
  */
 public class LCS {
     public static void main(String[] args) {
-        System.out.println((char) 96);
-
         String s1 = genString(5);
         String s2 = genString(10);
 
