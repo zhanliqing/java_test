@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class HeapSort {
     public static void main(String args[]) {
-        int values[] = new int[10001];
+        int values[] = new int[100];
         initValues(values);
         print(values);
         shuffer(values);
