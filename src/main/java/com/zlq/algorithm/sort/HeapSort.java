@@ -71,7 +71,7 @@ public class HeapSort {
         }
     }
 
-    private static void print(int[] values) {
+    public static void print(int[] values) {
         StringBuilder builder = new StringBuilder("[");
         for (int i = 0; i < values.length; i++) {
             builder.append(values[i]).append(",");
@@ -108,7 +108,7 @@ public class HeapSort {
         }
     }
 
-    private static void swap(int[] values, int idx, int now) {
+    public static void swap(int[] values, int idx, int now) {
         int tmp = values[idx];
         values[idx] = values[now];
         values[now] = tmp;
