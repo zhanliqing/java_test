@@ -16,11 +16,11 @@ public class Sort {
 		}
 		Collections.shuffle(list);
 		System.out.println(list);
-		Collections.sort(list);
+		/*Collections.sort(list);
 		System.out.println(list);
 
 		Collections.shuffle(list);
-		System.out.println(list);
+		System.out.println(list);*/
 		Collections.sort(list, new Comparator<Integer>() {
 			@Override
 			public int compare(Integer o1, Integer o2) {

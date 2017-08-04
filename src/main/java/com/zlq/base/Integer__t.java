@@ -21,4 +21,14 @@ public class Integer__t {
         Integer i2 = 10;
         System.out.println(i1 == i2);
     }
+
+    @Test
+    public void doubleTOint() {
+        int a = 5;
+        double b = 0.4;
+
+        System.out.println(b+a);
+        int c = (int) (b + a);
+        System.out.println(Math.ceil(a+b));
+    }
 }

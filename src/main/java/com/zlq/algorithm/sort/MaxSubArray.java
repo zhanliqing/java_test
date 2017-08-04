@@ -11,6 +11,35 @@ public class MaxSubArray {
         int t[] = genData();
         System.out.println(maxData(t));
         System.out.println(maxData1(t));
+        System.out.println(maxData2(t));
+        System.out.println(maxData3(t));
+    }
+
+    static int maxData3(int data[]) {
+        int start = 0;
+        int value = data[start];
+        int iMax = value;
+        int nMax = value;
+        for (int i = start + 1; i < data.length; i++) {
+            value = data[i];
+            iMax = Math.max(value, iMax + value);
+            nMax = Math.max(nMax, iMax);
+        }
+        return nMax;
+    }
+
+
+    static int maxData2(int data[]) {
+        int length = data.length - 1;
+        int value = data[length];
+        int iMax = value;
+        int nMax = value;
+        for (int i = length - 1; i >= 0; i--) {
+            value = data[i];
+            iMax = Math.max(value, iMax + value);
+            nMax = Math.max(nMax, iMax);
+        }
+        return nMax;
     }
 
     static int maxData(int data[]) {
@@ -57,6 +86,7 @@ public class MaxSubArray {
 
     static int[] genData() {
         int tmp[] = {-1, 0, 1, 2};
+//        int tmp[] = {-1, -2, -3, -4};
         int length = 16;
         int real[] = new int[length];
         Random random = new Random();
