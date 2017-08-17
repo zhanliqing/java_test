@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 求一个集合的所有子集
+ * <p>
  * Created by liqing.zhan on 2017/7/13.
  */
 public class AllSubSet {

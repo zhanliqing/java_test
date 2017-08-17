@@ -8,7 +8,7 @@ import java.lang.reflect.ParameterizedType;
  * @param <T>
  */
 
-public class Tmp<T> {
+class Tmp<T> {
 
     private Class<T> eClass;
 
