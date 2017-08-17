@@ -24,27 +24,28 @@ public class LinkedListTiaoYao {
     }
 
     public static void main(String[] args) {
-        Node head = init(5);
+        Node head = init(15);
+        Node mid = getMidNode(head);
+        Node f = head;
+        Node m = revert(mid.next);
+        mid.next = null;
+        while (m != null) {
+            Node n = f.next;
+            f.next = m;
+            m = m.next;
+            f.next.next = n;
+            f = f.next.next;
+        }
         check(head);
 
-        Node mid = getMidNode(head);
-        mid = revert(mid);
-
-        Node h1 = head;
-        Node m1 = mid;
-        while (h1 != mid) {
-            Node hn = h1.next;
-            h1.next = m1;
-            m1 = m1.next;
-            h1.next.next = hn;
-            h1 = hn;
-        }
-
-        System.out.println(getMidNode(head));
-//        head = revert(head);
-//        check(head);
     }
 
+    /**
+     * 初始化
+     *
+     * @param c
+     * @return
+     */
     private static Node init(int c) {
         int i = 2;
         Node head = new Node("1", null);
@@ -57,6 +58,11 @@ public class LinkedListTiaoYao {
         return head;
     }
 
+    /**
+     * 打印输出
+     *
+     * @param head
+     */
     private static void check(Node head) {
         while (head != null) {
             System.out.print(String.format("%s\t", head));
@@ -65,6 +71,12 @@ public class LinkedListTiaoYao {
         System.out.println();
     }
 
+    /**
+     * 翻转链表
+     *
+     * @param head
+     * @return
+     */
     private static Node revert(Node head) {
         if (head == null) {
             return null;
@@ -81,6 +93,47 @@ public class LinkedListTiaoYao {
         return head;
     }
 
+    /**
+     * 交换链表的两个节点的next节点
+     *
+     * @param first
+     * @param second
+     */
+    private static void swap(Node first, Node second) {
+        if (first == second.next) {
+            swapNeighber(second, first);
+        } else if (first.next == second) {
+            swapNeighber(first, second);
+        } else {
+            Node sn = first.next.next;
+            first.next.next = second.next.next;
+            second.next.next = sn;
+            sn = second.next;
+            second.next = first.next;
+            first.next = sn;
+        }
+    }
+
+    /**
+     * 交换相邻的两个链表节点的next节点
+     *
+     * @param first
+     * @param second
+     */
+    private static void swapNeighber(Node first, Node second) {
+        Node sn = second.next;
+        first.next = second.next;
+        second.next = second.next.next;
+        sn.next = second;
+
+    }
+
+    /**
+     * 获取中间节点
+     *
+     * @param head
+     * @return
+     */
     private static Node getMidNode(Node head) {
         if (head == null) {
             return null;
@@ -89,7 +142,7 @@ public class LinkedListTiaoYao {
         Node h2 = head;
 
         while (true) {
-            if (h2 == null || h2.next == null) {
+            if (h2 == null || h2.next == null || h2.next.next == null) {
                 return h1;
             }
             h1 = h1.next;
