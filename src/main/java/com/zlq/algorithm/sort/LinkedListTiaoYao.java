@@ -24,7 +24,7 @@ public class LinkedListTiaoYao {
     }
 
     public static void main(String[] args) {
-        Node head = init(15);
+        Node head = init(10);
         Node mid = getMidNode(head);
         Node f = head;
         Node m = revert(mid.next);
