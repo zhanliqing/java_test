@@ -4,6 +4,8 @@ package com.zlq.algorithm.sort;
  * 前后跳跃输出
  * <p>
  * l1->l2->l3->l4->l5
+ * 变幻成
+ * <p>
  * l1->l5->l2->l4-L3
  * <p>
  * Created by liqing.zhan on 2017/8/17.
@@ -24,7 +26,7 @@ public class LinkedListTiaoYao {
     }
 
     public static void main(String[] args) {
-        Node head = init(10);
+        Node head = init(500);
         Node mid = getMidNode(head);
         Node f = head;
         Node m = revert(mid.next);
