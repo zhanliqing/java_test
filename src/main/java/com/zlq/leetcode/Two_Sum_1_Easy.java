@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by zhanliqing on 2017/8/16.
  */
-public class Two_Sum_1 {
+public class Two_Sum_1_Easy {
     public static void main(String[] args) {
         int num[] = {2, 7, 11, 5, 15, 20};
 //        int n[] = twoSum1(num, 9);
