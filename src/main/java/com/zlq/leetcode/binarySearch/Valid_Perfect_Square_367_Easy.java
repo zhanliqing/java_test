@@ -1,24 +1,19 @@
-package com.zlq.leetcode;
-
-import javax.validation.constraints.Max;
-
-import static com.sun.tools.doclint.Entity.sum;
+package com.zlq.leetcode.binarySearch;
 
 /**
  * Created by zhanliqing on 2017/8/19.
  */
 public class Valid_Perfect_Square_367_Easy {
     public static void main(String[] args) {
-        System.out.println(Solution.isPerfectSquare(16));
+        System.out.println(Solution.isPerfectSquare(25));
     }
 
     static class Solution {
         public static boolean isPerfectSquare(int num) {
-            int s = 0;
+            int s = 1;
             int e = num;
-            int mid = 0;
             while (s < e) {
-                mid = (s + e) / 2;
+                int mid = (s + e) / 2;
                 if (mid * mid > num) {
                     e = mid - 1;
                 }
@@ -29,6 +24,7 @@ public class Valid_Perfect_Square_367_Easy {
                     return true;
                 }
             }
+            return false;
         }
     }
 }
