@@ -8,10 +8,18 @@ import java.util.Map;
  */
 public class Two_Sum_1 {
     public static void main(String[] args) {
-        int num[] = {2, 7, 11, 5, 15, 20};
-//        int n[] = twoSum1(num, 9);
-//        int n[] = twoSum2(num, 9);
-        int n[] = twoSum3(num, 12);
+        int num[] = {2, 5, 7, 11, 15, 20};
+        int n[] = twoSum1(num, 9);
+        for (int i = 0; i < n.length; i++) {
+            System.out.print(String.format("%d\t", n[i]));
+        }
+        System.out.println();
+        n = twoSum2(num, 9);
+        for (int i = 0; i < n.length; i++) {
+            System.out.print(String.format("%d\t", n[i]));
+        }
+        System.out.println();
+        n = twoSum3(num, 9);
         for (int i = 0; i < n.length; i++) {
             System.out.print(String.format("%d\t", n[i]));
         }
