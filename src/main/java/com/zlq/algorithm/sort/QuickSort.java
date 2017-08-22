@@ -7,9 +7,10 @@ import java.util.Random;
  */
 public class QuickSort {
     public static void main(String[] args) {
-        int values[] = new int[58];
+        int values[] = new int[5];
         HeapSort.initValues(values);
         HeapSort.shuffer(values);
+        HeapSort.print(values);
         quicksort(values, 0, values.length - 1);
         HeapSort.print(values);
     }
@@ -23,9 +24,13 @@ public class QuickSort {
         int j = end;
         while (start < end) {
             while (values[end] >= value && end > start) end--;
-            values[start] = values[end];
+            if (start < end) {
+                values[start++] = values[end];
+            }
             while (values[start] <= value && end > start) start++;
-            values[end] = values[start];
+            if (start < end) {
+                values[end--] = values[start];
+            }
         }
         values[start] = value;
         if (i < start - 1) {
