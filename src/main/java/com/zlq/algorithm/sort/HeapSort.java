@@ -50,7 +50,7 @@ public class HeapSort {
 
     public static void shuffer(int values[]) {
         Random r = new Random();
-        for (int i = 1; i < values.length; i++) {
+        for (int i = 0; i < values.length; i++) {
             int j = r.nextInt(values.length - i) + i;
             swap(values, i, j);
         }
